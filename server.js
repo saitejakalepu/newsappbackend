@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const app = express();
-const PORT = 5000; // You can change the port if needed
+const PORT = 5000; 
 app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello from Node.js on Vercel!");
@@ -11,7 +11,6 @@ app.get("/", (req, res) => {
 app.get("/news", async (req, res) => {
   console.log(req.query);
   try {
-    // Fetch news data from News API
     const response = await axios.get("https://newsapi.org/v2/top-headlines", {
       params: {
         country: "us",
@@ -19,7 +18,7 @@ app.get("/news", async (req, res) => {
         apiKey: req.query.apiKey,
       },
     });
-    res.json(response.data); // Send the news data back to the frontend
+    res.json(response.data); 
   } catch (error) {
     res.status(500).send("Error fetching news");
   }
